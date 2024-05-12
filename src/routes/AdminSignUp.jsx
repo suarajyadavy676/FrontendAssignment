@@ -15,19 +15,19 @@ function AdminSignUp() {
   let [alResData, setAlResData] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userData);
+    // console.log(userData);
     try {
       //for development
-      let res = await axios.post(
-        "http://localhost:3000/user/register",
-        {...userData,role:"admin"}
-      );
+      // let res = await axios.post(
+      //   "http://localhost:3000/user/register",
+      //   {...userData,role:"admin"}
+      // );
 
       // for production
-      // let res = await axios.post(
-      //   `${import.meta.env.REACT_APP_API_URL}user/register`,
-      //   userData
-      // );
+      let res = await axios.post(
+        `${import.meta.env.REACT_APP_API_URL}user/register`,
+        userData
+      );
       console.log(res);
       if (res.data == "user already present") {
         return setAlResData(res.data);

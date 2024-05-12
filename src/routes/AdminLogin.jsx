@@ -10,15 +10,15 @@ function AdminLogin() {
   let [loginData, setLoginData] = useState({ password: "", email: "" });
   const handleClick = async (e) => {
     e.preventDefault();
-    console.log(loginData);
+    // console.log(loginData);
     try {
       //for development
-      let res = await axios.post("http://localhost:3000/user/signIn",loginData)
+      // let res = await axios.post("http://localhost:3000/user/signIn",loginData)
       // for production
-      // let res = await axios.post(
-      //   `${import.meta.env.REACT_APP_API_URL}user/signIn`,
-      //   loginData
-      // );
+      let res = await axios.post(
+        `${import.meta.env.REACT_APP_API_URL}user/signIn`,
+        loginData
+      );
       console.log(res);
       localStorage.setItem("token", res.data.token);
       setLoginData({ password: "", email: "" });
